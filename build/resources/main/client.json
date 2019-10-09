@@ -1,0 +1,11 @@
+{
+
+    "name": "mHack",
+    "website": "https://gitlab.com/EMC-Framework/EDK",
+    "author": "Xiloe",
+    "minVersion": "13.9.0",
+    "version": 1,
+    "main": "fr.xiloe.mhack.Main.Main",
+    "updateLinkOverride": false
+
+}
