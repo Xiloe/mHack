@@ -2,6 +2,6 @@ package fr.xiloe.mhack.Modules;
 
 public enum ModType {
 
-    FLIGHT
+    FLIGHT, NOFALL, SPRINT
 
 }

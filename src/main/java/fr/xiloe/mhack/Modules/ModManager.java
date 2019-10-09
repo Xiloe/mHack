@@ -2,7 +2,6 @@ package fr.xiloe.mhack.Modules;
 
 import fr.xiloe.mhack.Modules.Mods.Movement.*;
 import me.deftware.client.framework.event.events.*;
-import me.deftware.client.framework.wrappers.IChat;
 
 import java.util.HashMap;
 
@@ -13,6 +12,8 @@ public class ModManager {
 
     public void initialize() {
         modlist.put(ModType.FLIGHT, new Flight());
+        modlist.put(ModType.NOFALL, new NoFall());
+        modlist.put(ModType.SPRINT, new Sprint());
         done = true;
     }
 

@@ -1,8 +1,13 @@
 package fr.xiloe.mhack.Commands;
 
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import me.deftware.client.framework.command.CommandBuilder;
+import me.deftware.client.framework.command.CommandResult;
 import me.deftware.client.framework.command.EMCModCommand;
+import me.deftware.client.framework.main.Bootstrap;
+import me.deftware.client.framework.maps.SettingsMap;
 import me.deftware.client.framework.wrappers.IChat;
 
 public class TestCommands extends EMCModCommand {
@@ -10,14 +15,33 @@ public class TestCommands extends EMCModCommand {
 
     @Override
     public CommandBuilder getCommandBuilder() {
-        return new CommandBuilder().set(LiteralArgumentBuilder.literal("debug")
+        return new CommandBuilder().set((LiteralArgumentBuilder) LiteralArgumentBuilder.literal("bind")
                 .then(
-                        LiteralArgumentBuilder.literal("modlist")
-                            .executes(c -> {
-                                IChat.sendClientMessage("status: ");
-                                return 1;
-                            })
+                        RequiredArgumentBuilder.argument("module", StringArgumentType.string())
+                                .executes(c -> {
+                                    return 1;
+                                })
+                                .then(
+                                    RequiredArgumentBuilder.argument("keybind", StringArgumentType.string())
+                                            .executes(c -> {
+                                                CommandResult r = new CommandResult(c);
+                                                SettingsMap.update(SettingsMap.MapKeys.EMC_SETTINGS, "COMMAND_TRIGGER", r.getString("prefix"));
+                                                Bootstrap.EMCSettings.saveString("commandtrigger", r.getString("prefix"));
+                                                IChat.sendClientMessage("Set command trigger to \"" + r.getString("prefix") + "\"");
+                                                return 1;
+                                            })
+                                )
+                )
+                .then(
+                        LiteralArgumentBuilder.literal("restore")
+                                .executes(c -> {
+                                    SettingsMap.update(SettingsMap.MapKeys.EMC_SETTINGS, "COMMAND_TRIGGER", ".");
+                                    Bootstrap.EMCSettings.saveString("commandtrigger", ".");
+                                    IChat.sendClientMessage("Command trigger has been reset to \".\" (single dot)");
+                                    return 1;
+                                })
                 )
         );
     }
+
 }
