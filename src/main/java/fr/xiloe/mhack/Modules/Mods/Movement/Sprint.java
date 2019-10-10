@@ -21,7 +21,7 @@ public class Sprint extends Mod {
 
     @Override
     public void onEnable() {
-        // We don't use it.
+
     }
 
     @Override
