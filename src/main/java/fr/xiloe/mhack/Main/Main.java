@@ -12,7 +12,7 @@ import me.deftware.client.framework.wrappers.gui.IGuiScreen;
 
 public class Main extends EMCMod {
 
-    public static final String prefix = ChatColor.RED + "" + ChatColor.BOLD + "mHack" + ChatColor.GRAY + " > ";
+    public static final String prefix = ChatColor.RED + "mHack" + ChatColor.GRAY + " > ";
     public static final String name = "mHack";
 
     private static IGuiScreen screen;
