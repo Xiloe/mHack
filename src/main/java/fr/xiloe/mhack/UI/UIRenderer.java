@@ -24,9 +24,9 @@ public class UIRenderer {
         IFontRenderer.drawStringWithShadow("FPS: ", 2, 10 + IFontRenderer.getFontHeight()*2, 0xFFFFFF);
         IFontRenderer.drawStringWithShadow(String.valueOf(IMinecraft.getFPS()), IFontRenderer.getStringWidth("FPS: "), 10 + IFontRenderer.getFontHeight()*2, 0x999999);
 
-        // TODO: Fix it
-        IFontRenderer.drawStringWithShadow("XYZ: ", 2, IGuiScreen.getDisplayHeight() - IFontRenderer.getFontHeight() - 2, 0xFFFFFF);
-        IFontRenderer.drawStringWithShadow(String.valueOf(IEntityPlayer.getPosX() + ", " + IEntityPlayer.getPosY() + ", " + IEntityPlayer.getPosZ()), IFontRenderer.getStringWidth("XYZ: "), IGuiScreen.getDisplayHeight() - IFontRenderer.getFontHeight() - 2, 0x999999);
+        // TODO: Render the text at the screen bottom left corner ?
+        IFontRenderer.drawStringWithShadow("XYZ: ", 2, 10 + IFontRenderer.getFontHeight()*3, 0xFFFFFF);
+        IFontRenderer.drawStringWithShadow(String.valueOf((int)IEntityPlayer.getPosX() + ", " + (int)IEntityPlayer.getPosY() + ", " + (int)IEntityPlayer.getPosZ()), IFontRenderer.getStringWidth("XYZ: ") ,10 + IFontRenderer.getFontHeight()*3, 0x999999);
 
 
         int i = 0;
