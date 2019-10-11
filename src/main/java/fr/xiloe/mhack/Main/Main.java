@@ -1,12 +1,16 @@
 package fr.xiloe.mhack.Main;
 
+import fr.xiloe.mhack.Commands.ClientCommands;
 import fr.xiloe.mhack.Commands.TestCommands;
 import fr.xiloe.mhack.Modules.ModManager;
 import fr.xiloe.mhack.UI.UIRenderer;
-import me.deftware.client.framework.event.*;
-import me.deftware.client.framework.command.*;
+import me.deftware.client.framework.command.CommandRegister;
+import me.deftware.client.framework.event.EventBus;
+import me.deftware.client.framework.event.EventHandler;
+import me.deftware.client.framework.event.events.EventKeyAction;
+import me.deftware.client.framework.event.events.EventRender2D;
+import me.deftware.client.framework.event.events.EventUpdate;
 import me.deftware.client.framework.main.EMCMod;
-import me.deftware.client.framework.event.events.*;
 import me.deftware.client.framework.utils.ChatColor;
 import me.deftware.client.framework.wrappers.IChat;
 import me.deftware.client.framework.wrappers.IMinecraft;
@@ -28,6 +32,7 @@ public class Main extends EMCMod {
         EventBus.registerClass(this.getClass(), this);
         // We can also register a custom client command here
         CommandRegister.registerCommand(new TestCommands());
+        CommandRegister.registerCommand(new ClientCommands());
     }
 
     public static ModManager getModmanager() {
@@ -59,7 +64,10 @@ public class Main extends EMCMod {
                 IMinecraft.setGuiScreen(screen);
                 screen = null;
             }
-            UIRenderer.draw();
+
+            if (ClientCommands.gui) {
+                UIRenderer.draw();
+            }
         }
     }
 }

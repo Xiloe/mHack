@@ -10,7 +10,7 @@ public class Flight extends Mod {
 
 
     public Flight() {
-        super("Flight", "I believe I can fly!", KeyEvent.VK_F);
+        super("Flight", "I believe I can fly!", KeyEvent.VK_R);
     }
 
     @Override

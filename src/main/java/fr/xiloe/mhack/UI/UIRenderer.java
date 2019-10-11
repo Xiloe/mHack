@@ -1,13 +1,12 @@
 package fr.xiloe.mhack.UI;
 
+import fr.xiloe.mhack.Commands.ClientCommands;
 import fr.xiloe.mhack.Main.Main;
 import fr.xiloe.mhack.Modules.Mod;
 import me.deftware.client.framework.wrappers.IMinecraft;
 import me.deftware.client.framework.wrappers.entity.IEntityPlayer;
 import me.deftware.client.framework.wrappers.gui.IGuiScreen;
 import me.deftware.client.framework.wrappers.render.IFontRenderer;
-import net.minecraft.server.MinecraftServer;
-
 
 public class UIRenderer {
 
@@ -16,31 +15,54 @@ public class UIRenderer {
     }
 
     private static void drawClientOverlay() {
-        IFontRenderer.drawStringWithShadow(Main.name + " - v" + Main.version, 2, 2, 0xFF0000);
+        // Client name & version (Top left corner)
+        IFontRenderer.drawStringWithShadow(Main.name, 2, 2, 0x08CFCD);
+        IFontRenderer.drawStringWithShadow(String.valueOf(Main.version), IFontRenderer.getStringWidth(Main.name + 1), 2, 0xFFFFFF);
 
-        IFontRenderer.drawStringWithShadow("Modules: ", 2, 10 + IFontRenderer.getFontHeight()*1, 0xFFFFFF);
-        IFontRenderer.drawStringWithShadow(String.valueOf(Main.getModmanager().getModlist().size()), IFontRenderer.getStringWidth("Modules: "), 10 + IFontRenderer.getFontHeight()*1, 0x999999);
+        // FPS (Top left corner)
+        IFontRenderer.drawStringWithShadow("FPS:", 2, 10 + IFontRenderer.getFontHeight(), 0x08CFCD);
+        IFontRenderer.drawStringWithShadow(String.valueOf(IMinecraft.getFPS()), IFontRenderer.getStringWidth("FPS:" + 1), 10 + IFontRenderer.getFontHeight(), 0xFFFFFF);
 
-        IFontRenderer.drawStringWithShadow("FPS: ", 2, 10 + IFontRenderer.getFontHeight()*2, 0xFFFFFF);
-        IFontRenderer.drawStringWithShadow(String.valueOf(IMinecraft.getFPS()), IFontRenderer.getStringWidth("FPS: "), 10 + IFontRenderer.getFontHeight()*2, 0x999999);
+        // TODO: Make this working
+        // TPS (Top left corner)
+        IFontRenderer.drawStringWithShadow("TPS:", 2, 12 + IFontRenderer.getFontHeight() * 2, 0x08CFCD);
+        IFontRenderer.drawStringWithShadow("N/A", IFontRenderer.getStringWidth("TPS:" + 1), 12 + IFontRenderer.getFontHeight() * 2, 0xFFFFFF);
 
-        // TODO: Render the text at the screen bottom left corner ?
-        IFontRenderer.drawStringWithShadow("XYZ: ", 2, 10 + IFontRenderer.getFontHeight()*3, 0xFFFFFF);
-        IFontRenderer.drawStringWithShadow(String.valueOf((int)IEntityPlayer.getPosX() + ", " + (int)IEntityPlayer.getPosY() + ", " + (int)IEntityPlayer.getPosZ()), IFontRenderer.getStringWidth("XYZ: ") ,10 + IFontRenderer.getFontHeight()*3, 0x999999);
+        // TODO: Also make this working
+        // Ping (Top left corner)
+        IFontRenderer.drawStringWithShadow("Ping:", 2, 12 + IFontRenderer.getFontHeight() * 3, 0x08CFCD);
+        IFontRenderer.drawStringWithShadow("N/A", IFontRenderer.getStringWidth("Ping:" + 1), 12 + IFontRenderer.getFontHeight() * 3, 0xFFFFFF);
 
+        int y = 0;
+        if (ClientCommands.coordinates) {
+            y = IGuiScreen.getScaledHeight() - IFontRenderer.getFontHeight() * 2 - 4;
+        } else {
+            y = y = IGuiScreen.getScaledHeight() - IFontRenderer.getFontHeight() - 2;
+        }
 
-        int i = 0;
+        // Current server IP + game version (Bottom left corner)
+        IFontRenderer.drawStringWithShadow("IP:", 2, y, 0x08CFCD);
+        IFontRenderer.drawStringWithShadow(IMinecraft.getCurrentServer().getIIP() + " [" + IMinecraft.getCurrentServer().getIGameVersion() + "]", IFontRenderer.getStringWidth("IP:" + 1), y, 0xFFFFFF);
+
+        if (ClientCommands.coordinates) {
+            // Coordinates (Bottom left corner)
+            IFontRenderer.drawStringWithShadow("XYZ:" + 1, 2, IGuiScreen.getScaledHeight() - IFontRenderer.getFontHeight() - 2, 0x08CFCD);
+            IFontRenderer.drawStringWithShadow((int) IEntityPlayer.getPosX() + ", " + (int) IEntityPlayer.getPosY() + ", " + (int) IEntityPlayer.getPosZ(), IFontRenderer.getStringWidth("XYZ:" + 1), IGuiScreen.getScaledHeight() - IFontRenderer.getFontHeight() - 2, 0xFFFFFF);
+        }
+
+        //Render all active Mods
+        int i = 1;
+
+        IFontRenderer.drawStringWithShadow("Active modules:", IGuiScreen.getScaledWidth() - IFontRenderer.getStringWidth("Active Modules:") - 2, 2, 0xFFFFFF);
         for (Mod m : Main.getModmanager().getModlist().values()) {
             if (m.isState()) {
                 int offset = 0;
                 offset = (IFontRenderer.getFontHeight() * i);
                 IFontRenderer.drawStringWithShadow(m.getName(),
                         IGuiScreen.getScaledWidth() - IFontRenderer.getStringWidth(m.getName()) - 2,
-                        3 + offset, 0xE69138);
+                        3 + offset, 0x08CFCD);
                 i += 1;
             }
         }
     }
-
-
 }

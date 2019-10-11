@@ -1,9 +1,6 @@
 package fr.xiloe.mhack.Modules;
 
-import fr.xiloe.mhack.Main.Main;
 import me.deftware.client.framework.event.events.EventUpdate;
-import me.deftware.client.framework.utils.ChatColor;
-import me.deftware.client.framework.wrappers.IChat;
 
 public abstract class Mod {
 
@@ -53,7 +50,7 @@ public abstract class Mod {
 
     public void toggle() {
         this.state = !state;
-        IChat.sendClientMessage(ChatColor.AQUA + this.getName() + ChatColor.GRAY +" is now " + (state ? ChatColor.GREEN + "enabled" + ChatColor.GRAY : ChatColor.RED + "disabled" + ChatColor.GRAY), Main.prefix);
+        // IChat.sendClientMessage(ChatColor.AQUA + this.getName() + ChatColor.GRAY +" is now " + (state ? ChatColor.GREEN + "enabled" + ChatColor.GRAY : ChatColor.RED + "disabled" + ChatColor.GRAY), Main.prefix);
         if (state) {
             this.onEnable();
         } else {
