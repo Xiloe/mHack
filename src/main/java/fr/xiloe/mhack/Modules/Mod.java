@@ -1,5 +1,7 @@
 package fr.xiloe.mhack.Modules;
 
+import me.deftware.client.framework.event.events.EventDamage;
+import me.deftware.client.framework.event.events.EventPacketSend;
 import me.deftware.client.framework.event.events.EventUpdate;
 
 public abstract class Mod {
@@ -59,6 +61,10 @@ public abstract class Mod {
     }
 
     public abstract void onUpdate(EventUpdate event);
+
+    public abstract void onPacketSend(EventPacketSend event);
+
+    public abstract void onDamage(EventDamage event);
 
     public abstract void onEnable();
 

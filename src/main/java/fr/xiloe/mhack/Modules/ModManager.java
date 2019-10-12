@@ -3,14 +3,16 @@ package fr.xiloe.mhack.Modules;
 import fr.xiloe.mhack.Modules.Mods.Movement.Flight;
 import fr.xiloe.mhack.Modules.Mods.Movement.NoFall;
 import fr.xiloe.mhack.Modules.Mods.Movement.Sprint;
+import me.deftware.client.framework.event.events.EventDamage;
 import me.deftware.client.framework.event.events.EventKeyAction;
+import me.deftware.client.framework.event.events.EventPacketSend;
 import me.deftware.client.framework.event.events.EventUpdate;
 
 import java.util.HashMap;
 
 public class ModManager {
 
-    private HashMap<ModType, Mod> modlist = new HashMap<ModType, Mod>();
+    private HashMap<ModType, Mod> modlist = new HashMap<>();
     public boolean done = false;
 
     public void initialize() {
@@ -38,6 +40,22 @@ public class ModManager {
         for (Mod m : modlist.values()) {
             if (m.isState()) {
                 m.onUpdate(event);
+            }
+        }
+    }
+
+    public void onPacketSend(EventPacketSend event) {
+        for (Mod m : modlist.values()) {
+            if (m.isState()) {
+                m.onPacketSend(event);
+            }
+        }
+    }
+
+    public void onDamage(EventDamage event) {
+        for (Mod m : modlist.values()) {
+            if (m.isState()) {
+                m.onDamage(event);
             }
         }
     }
