@@ -1,15 +1,13 @@
 package fr.xiloe.mhack.Main;
 
-import fr.xiloe.mhack.Commands.ClientCommands;
-import fr.xiloe.mhack.Commands.TestCommands;
+import fr.xiloe.mhack.Commands.UtilsCommands;
+import fr.xiloe.mhack.Commands.KeybindManager;
 import fr.xiloe.mhack.Modules.ModManager;
 import fr.xiloe.mhack.UI.UIRenderer;
 import me.deftware.client.framework.command.CommandRegister;
 import me.deftware.client.framework.event.EventBus;
 import me.deftware.client.framework.event.EventHandler;
-import me.deftware.client.framework.event.events.EventKeyAction;
-import me.deftware.client.framework.event.events.EventRender2D;
-import me.deftware.client.framework.event.events.EventUpdate;
+import me.deftware.client.framework.event.events.*;
 import me.deftware.client.framework.main.EMCMod;
 import me.deftware.client.framework.utils.ChatColor;
 import me.deftware.client.framework.wrappers.IChat;
@@ -18,9 +16,9 @@ import me.deftware.client.framework.wrappers.gui.IGuiScreen;
 
 public class Main extends EMCMod {
 
-    public static final String prefix = ChatColor.RED + "mHack" + ChatColor.GRAY + " >";
-    public static final String name = "mHack";
-    public static final float version = 1.0f;
+    public static final String PREFIX = ChatColor.RED + "" + ChatColor.BOLD + "mHack" + ChatColor.RESET + "" + ChatColor.GRAY + " >";
+    public static final String NAME = "mHack";
+    public static final float VERSION = 1.0f;
 
     private static IGuiScreen screen;
     private static ModManager modmanager = new ModManager();
@@ -31,8 +29,8 @@ public class Main extends EMCMod {
         // We need to register this class to handle events
         EventBus.registerClass(this.getClass(), this);
         // We can also register a custom client command here
-        CommandRegister.registerCommand(new TestCommands());
-        CommandRegister.registerCommand(new ClientCommands());
+        CommandRegister.registerCommand(new KeybindManager());
+        CommandRegister.registerCommand(new UtilsCommands());
     }
 
     public static ModManager getModmanager() {
@@ -44,16 +42,23 @@ public class Main extends EMCMod {
         if(!modmanager.done) {
             modmanager.initialize();
             modmanager.done = true;
-            IChat.sendClientMessage("ModManager: Initialized", Main.prefix);
+            IChat.sendClientMessage("ModManager: Initialized", Main.PREFIX);
         } else {
             modmanager.onUpdate(event);
         }
     }
 
     @EventHandler(eventType = EventKeyAction.class)
-    public void onUp(EventKeyAction event) {
+    public void onKeyAction(EventKeyAction event) {
         if(modmanager.done) {
             modmanager.onKeyAction(event);
+        }
+    }
+
+    @EventHandler(eventType = EventPacketSend.class)
+    public void onPacketSend(EventPacketSend event) {
+        if(modmanager.done) {
+            modmanager.onPacketSend(event);
         }
     }
 
@@ -65,7 +70,7 @@ public class Main extends EMCMod {
                 screen = null;
             }
 
-            if (ClientCommands.gui) {
+            if (UtilsCommands.gui) {
                 UIRenderer.draw();
             }
         }

@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e0991961-bb7d-40c1-b524-dcd08087131d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Commands/ClientCommands.java" afterDir="false" />
+    <list default="true" id="e0991961-bb7d-40c1-b524-dcd08087131d" name="Default Changelist" comment="Fixed NoFall">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/NoClip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Commands/ClientCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Commands/UtilsCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Commands/TestCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Commands/KeybindManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/ModManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/ModManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/ModType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/ModType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/NoFall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/NoFall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/Sprint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/Modules/Mods/Movement/Sprint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/UI/UIRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/xiloe/mhack/UI/UIRenderer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,12 +84,12 @@
   <component name="ProjectId" id="1RqNav3GaJutRRzdVs8sGMoXsRO" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="discord-application" />
+    <property name="settings.editor.selected.configurable" value="discord-project" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="fr.xiloe.mhack.Commands" />
       <recent name="fr.xiloe.mhack.Modules.Mods.Movement" />
+      <recent name="fr.xiloe.mhack.Commands" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -137,7 +141,18 @@
       <option name="presentableId" value="Default" />
       <updated>1570390732745</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated UI + new commands (.toggle)">
+      <created>1570827199603</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570827199603</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -151,5 +166,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Updated UI + new commands (.toggle)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated UI + new commands (.toggle)" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

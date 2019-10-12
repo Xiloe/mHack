@@ -4,7 +4,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.deftware.client.framework.command.CommandBuilder;
 import me.deftware.client.framework.command.EMCModCommand;
 
-public class ClientCommands extends EMCModCommand {
+public class UtilsCommands extends EMCModCommand {
 
 
     public static boolean coordinates = false;
