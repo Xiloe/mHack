@@ -9,6 +9,7 @@ import me.deftware.client.framework.event.EventBus;
 import me.deftware.client.framework.event.EventHandler;
 import me.deftware.client.framework.event.events.*;
 import me.deftware.client.framework.main.EMCMod;
+import me.deftware.client.framework.network.packets.ICPacketPlayer;
 import me.deftware.client.framework.utils.ChatColor;
 import me.deftware.client.framework.wrappers.IChat;
 import me.deftware.client.framework.wrappers.IMinecraft;

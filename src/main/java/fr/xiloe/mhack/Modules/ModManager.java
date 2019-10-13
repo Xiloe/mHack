@@ -4,6 +4,7 @@ import fr.xiloe.mhack.Modules.Mods.Movement.Flight;
 import fr.xiloe.mhack.Modules.Mods.Movement.NoClip;
 import fr.xiloe.mhack.Modules.Mods.Movement.NoFall;
 import fr.xiloe.mhack.Modules.Mods.Movement.Sprint;
+import me.deftware.client.framework.event.events.EventDamage;
 import me.deftware.client.framework.event.events.EventKeyAction;
 import me.deftware.client.framework.event.events.EventPacketSend;
 import me.deftware.client.framework.event.events.EventUpdate;
